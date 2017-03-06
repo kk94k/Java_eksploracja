@@ -36,21 +36,24 @@ public class wykład1Dane {
         System.out.println("\n"+dane.classAttribute());
         
         //Tworzymy klasyfikator
-        Classifier model = new IBk();
-        model.buildClassifier(dane); //Już jest
+        Classifier kNN = new IBk(3);
+        kNN.buildClassifier(dane); //Już jest
         
         
         Instance w5 = (Instance) dane.get(5).copy();
         w5.setMissing(4);
+        w5.setValue(2, 85);
      
         System.out.println("\n"+w5);
-        int decyzja= (int) model.classifyInstance(w5);
+        int decyzja= (int) kNN.classifyInstance(w5);
         
-        System.out.println("\nDecyzja: "+decyzja);
+      
         
         System.out.println("\n"+dane);
         
         Attribute atr =dane.classAttribute();
+        
+        System.out.println("\nDecyzja: "+decyzja);
         System.out.println("... to znaczy "+atr.value(decyzja));
         
         
